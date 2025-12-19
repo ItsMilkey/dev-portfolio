@@ -17,7 +17,7 @@
             </div>
 
             <h1
-                class="font-display font-extrabold text-[12vw] md:text-[6rem] leading-[1.1] tracking-tighter uppercase relative z-10"
+                class="font-display font-extrabold text-[14vw] sm:text-[12vw] md:text-[6rem] leading-[1.1] tracking-tighter uppercase relative z-10"
                 style="text-shadow: 
                     0 2px 4px rgba(45, 62, 47, 0.1),
                     0 4px 8px rgba(45, 62, 47, 0.15),
@@ -26,7 +26,7 @@
             >
                 <!-- Both names aligned, with spacing -->
                 <span class="block text-forest">HANS</span>
-                <span class="block text-forest mt-2">GÓMEZ</span>
+                <span class="block text-forest mt-1 md:mt-2">GÓMEZ</span>
             </h1>
 
             <!-- Decorative element - Orange glow -->
@@ -35,35 +35,22 @@
             >
             </div>
 
-            <!-- Decorative icons and shapes -->
+            <!-- Decorative icons and shapes (hidden on mobile) -->
             <div
-                class="absolute -right-8 top-0 text-coral text-3xl opacity-60 animate-pulse"
+                class="hidden md:block absolute -right-8 top-0 text-coral text-3xl opacity-60 animate-pulse"
             >
                 ✦
             </div>
             <div
-                class="absolute -left-6 bottom-4 text-vibrant-orange text-2xl opacity-40"
+                class="hidden sm:block absolute -left-6 bottom-4 text-vibrant-orange text-2xl opacity-40"
             >
                 ●
             </div>
 
-            <!-- Enhanced texture overlay -->
+            <!-- Enhanced texture overlay (single responsive layer) -->
             <div
-                class="absolute inset-0 opacity-[0.25] pointer-events-none -z-5"
-                style="background-image: 
-                    repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(45, 62, 47, 0.3) 35px, rgba(45, 62, 47, 0.3) 37px),
-                    repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(45, 62, 47, 0.3) 35px, rgba(45, 62, 47, 0.3) 37px);
-                transform: rotate(+1deg) scale(1.1);
-                mask-image: 
-                    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
-                    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
-                    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-                -webkit-mask-image: 
-                    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
-                    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
-                    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-                mask-composite: intersect;
-                -webkit-mask-composite: source-in;"
+                class="absolute inset-0 opacity-[0.15] md:opacity-[0.25] pointer-events-none -z-5 grid-texture"
+                style="--grid-size: 25px; transform: rotate(+1deg) scale(1.1);"
             >
             </div>
         </div>

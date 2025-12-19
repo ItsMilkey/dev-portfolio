@@ -16,12 +16,11 @@ import Navbar from "../components/Navbar.astro";
 		<div class="relative min-h-[90vh] flex flex-col justify-center">
 			<Hero />
 
-			<!-- Integrated Contact Card (positioned absolutely on large screens or just flowed?) -->
-			<!-- Let's flow it nicely under hero for mobile or side by side as before, but using Grid -->
+			<!-- Integrated Contact Card -->
 			<div
-				class="flex justify-center md:absolute md:right-0 md:top-[50%] md:transform md:-translate-y-1/2 md:z-20 mt-10 md:mt-0"
+				class="flex justify-center lg:absolute lg:right-0 lg:top-[50%] lg:transform lg:-translate-y-1/2 lg:z-20 mt-10 lg:mt-0"
 			>
-				<div class="scale-90 md:scale-100">
+				<div class="scale-75 sm:scale-90 lg:scale-100 w-full max-w-sm">
 					<ContactCard />
 				</div>
 			</div>

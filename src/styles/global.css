@@ -99,3 +99,26 @@ body::before {
 .group:hover .animate-scroll-right {
   animation-play-state: paused;
 }
+
+/* Responsive grid texture */
+.grid-texture {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent var(--grid-size), rgba(45, 62, 47, 0.3) var(--grid-size), rgba(45, 62, 47, 0.3) calc(var(--grid-size) + 2px)),
+    repeating-linear-gradient(90deg, transparent, transparent var(--grid-size), rgba(45, 62, 47, 0.3) var(--grid-size), rgba(45, 62, 47, 0.3) calc(var(--grid-size) + 2px));
+  mask-image:
+    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
+    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image:
+    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
+    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+@media (min-width: 768px) {
+  .grid-texture {
+    --grid-size: 35px;
+  }
+}
