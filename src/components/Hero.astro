@@ -3,30 +3,80 @@
 ---
 
 <section
-    class="min-h-[90vh] grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-4 items-center py-20 relative overflow-hidden"
+    class="min-h-[90vh] grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-4 items-center py-20 relative"
 >
     <!-- Text Content -->
     <div
-        class="header-content z-10 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left"
+        class="header-content z-10 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left overflow-visible"
     >
-        <div class="relative mb-6">
-            <h1
-                class="font-display font-extrabold text-[12vw] md:text-[6rem] leading-[0.85] tracking-tighter uppercase"
-            >
-                <!-- Both using the same font-display now, one outlined, one solid -->
-                <span class="block text-outlined text-forest/80">HANS</span>
-                <span class="block text-forest ml-2">GÓMEZ</span>
-            </h1>
-            <!-- Decorative element -->
+        <div class="relative mb-8 overflow-visible">
+            <!-- Background depth layer -->
             <div
-                class="absolute -top-10 left-0 w-24 h-24 bg-vibrant-orange rounded-full mix-blend-multiply opacity-80 blur-xl animate-float -z-10"
+                class="absolute inset-0 -z-20 bg-gradient-to-br from-transparent via-forest/5 to-transparent rounded-lg blur-sm"
+            >
+            </div>
+
+            <h1
+                class="font-display font-extrabold text-[12vw] md:text-[6rem] leading-[1.1] tracking-tighter uppercase relative z-10"
+                style="text-shadow: 
+                    0 2px 4px rgba(45, 62, 47, 0.1),
+                    0 4px 8px rgba(45, 62, 47, 0.15),
+                    0 8px 16px rgba(45, 62, 47, 0.1),
+                    0 16px 32px rgba(45, 62, 47, 0.05);"
+            >
+                <!-- Both names aligned, with spacing -->
+                <span class="block text-forest">HANS</span>
+                <span class="block text-forest mt-2">GÓMEZ</span>
+            </h1>
+
+            <!-- Decorative element - Orange glow -->
+            <div
+                class="absolute -top-10 left-0 w-32 h-32 bg-vibrant-orange rounded-full mix-blend-multiply opacity-80 blur-xl animate-float -z-10"
+            >
+            </div>
+
+            <!-- Decorative icons and shapes -->
+            <div
+                class="absolute -right-8 top-0 text-coral text-3xl opacity-60 animate-pulse"
+            >
+                ✦
+            </div>
+            <div
+                class="absolute -left-6 bottom-4 text-vibrant-orange text-2xl opacity-40"
+            >
+                ●
+            </div>
+
+            <!-- Enhanced texture overlay -->
+            <div
+                class="absolute inset-0 opacity-[0.25] pointer-events-none -z-5"
+                style="background-image: 
+                    repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(45, 62, 47, 0.3) 35px, rgba(45, 62, 47, 0.3) 37px),
+                    repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(45, 62, 47, 0.3) 35px, rgba(45, 62, 47, 0.3) 37px);
+                transform: rotate(+1deg) scale(1.1);
+                mask-image: 
+                    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
+                    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
+                    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+                -webkit-mask-image: 
+                    radial-gradient(ellipse 120% 100% at 60% 50%, black 40%, transparent 85%),
+                    linear-gradient(to right, transparent 0%, black 25%, black 75%, transparent 100%),
+                    linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+                mask-composite: intersect;
+                -webkit-mask-composite: source-in;"
             >
             </div>
         </div>
 
-        <h2 class="font-serif italic text-3xl md:text-4xl text-forest mb-8">
-            Software Developer
-        </h2>
+        <div class="relative inline-block mb-8">
+            <h2
+                class="font-serif italic text-3xl md:text-4xl text-forest opacity-90"
+            >
+                Software Developer
+            </h2>
+            <!-- Yellow decorative line -->
+            <div class="w-16 h-1 bg-vibrant-orange mt-2"></div>
+        </div>
 
         <p
             class="font-sans text-lg md:text-xl font-medium max-w-lg text-forest/80 leading-relaxed"

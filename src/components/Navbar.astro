@@ -21,14 +21,14 @@
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-8">
             <a
-                href="#about"
-                class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
-                >ABOUT</a
-            >
-            <a
                 href="#projects"
                 class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
                 >PROJECTS</a
+            >
+            <a
+                href="#about"
+                class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
+                >ABOUT</a
             >
             <a
                 href="#skills"
@@ -85,14 +85,14 @@
                 >Home</a
             >
             <a
-                href="#about"
-                class="text-cream hover:text-vibrant-orange font-sans text-sm"
-                >About</a
-            >
-            <a
                 href="#projects"
                 class="text-cream hover:text-vibrant-orange font-sans text-sm"
                 >Projects</a
+            >
+            <a
+                href="#about"
+                class="text-cream hover:text-vibrant-orange font-sans text-sm"
+                >About</a
             >
             <a
                 href="#skills"
@@ -128,6 +128,8 @@
             topNav.classList.add("-translate-y-full", "opacity-0");
             // Show Floating Button
             floatingContainer.classList.remove("translate-x-[200%]");
+            // Update button color based on background
+            updateFloatingMenuColor();
         } else {
             // Show Top Bar
             topNav.classList.remove("-translate-y-full", "opacity-0");
@@ -140,6 +142,57 @@
             );
         }
     });
+
+    // Function to detect background color and update menu styling
+    function updateFloatingMenuColor() {
+        if (!menuBtn || !floatingContainer) return;
+
+        // Get the position of the floating button
+        const rect = floatingContainer.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+
+        // Get the element at that position (temporarily hide the button to check what's behind)
+        floatingContainer.style.pointerEvents = "none";
+        const elementBelow = document.elementFromPoint(x, y);
+        floatingContainer.style.pointerEvents = "auto";
+
+        if (!elementBelow) return;
+
+        // Get computed background color
+        const bgColor = window.getComputedStyle(elementBelow).backgroundColor;
+
+        // Check if background is dark (forest green) or light (cream)
+        const isDarkBackground = isColorDark(bgColor);
+
+        // Update button styling using inline styles (more reliable than dynamic Tailwind classes)
+        if (isDarkBackground) {
+            // Dark background (forest) -> Light button (cream)
+            menuBtn.style.backgroundColor = "#F5F1E3"; // cream
+            menuBtn.style.color = "#2D3E2F"; // forest
+        } else {
+            // Light background (cream) -> Dark button (forest)
+            menuBtn.style.backgroundColor = "#2D3E2F"; // forest
+            menuBtn.style.color = "#F5F1E3"; // cream
+        }
+    }
+
+    // Helper function to determine if a color is dark
+    function isColorDark(color: string): boolean {
+        // Parse RGB values from the color string
+        const rgb = color.match(/\d+/g);
+        if (!rgb || rgb.length < 3) return false;
+
+        const r = parseInt(rgb[0]);
+        const g = parseInt(rgb[1]);
+        const b = parseInt(rgb[2]);
+
+        // Calculate relative luminance
+        const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+        // Consider dark if luminance is less than 0.5
+        return luminance < 0.5;
+    }
 
     // Toggle Menu
     menuBtn?.addEventListener("click", () => {
