@@ -1,43 +1,69 @@
-# Astro Starter Kit: Minimal
+# Dev Portfolio — Hans Alexis Gómez Iturriaga
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Welcome to my personal development portfolio — a curated collection of projects that showcase my skills, growth, and passion for software development.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## About Me
 
-Inside of your Astro project, you'll see the following folders and files:
+I’m **Hans Gómez**, a **Computer Engineering student at Duoc UC (2nd year)** from **Santiago, Chile**, currently focused on building a solid foundation in both backend and frontend development.  
+I hold a **C2 English certification**, have experience in team-based environments, and a strong commitment to continuous learning.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+My previous academic background in **Law** has strengthened my analytical thinking, organization, and communication — all of which I now apply to problem-solving in programming.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+**Career goal:**  
+To grow as a **backend/frontend or trainee developer**, contributing to efficient, maintainable, and scalable software solutions.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+---
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Tech Stack
 
-## 🧞 Commands
+**Languages:** Java, Python, Kotlin  
+**Frameworks & Tools:** Spring Boot, JPA, Maven, Gradle, HTML, Git, IntelliJ IDEA  
+**Databases:** Oracle Cloud (via wallet), SQL (relational)  
+**Methodologies:** Agile principles (Scrum, Kanban), layered architecture, REST API design, version control, and technical documentation
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Featured Projects
 
-## 👀 Want to learn more?
+| Project | Description | Tech |
+|----------|--------------|------|
+| [Project 1](#) | REST API project using Spring Boot and JPA | Java, Spring Boot |
+| [Project 2](#) | CLI-based task manager to practice Python OOP concepts | Python |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+placeholders
+| [Project 3](#) | CLI-based task manager to practice Python OOP concepts | Python |
+| [Project 4](#) | Personal portfolio website built with HTML, CSS, and basic JS | HTML, CSS, JS |
+
+> *(More projects will be added as I continue my academic and personal development journey.)*
+
+---
+
+## Currently Learning
+
+- Advanced Kotlin and backend/frontend architecture  
+- React migration from html and javascript  
+- 
+
+---
+
+## Soft Skills
+
+- Analytical thinking & problem-solving  
+- Organization and time management  
+- Team collaboration & leadership  
+- Adaptability and continuous learning  
+- Effective communication
+
+---
+
+## Contact
+
+Email: **hans.alexis.gomez1@gmail.com**  
+Linkedin: [LinkedIn — Hans Gómez Iturriaga](https://www.linkedin.com/in/hansgomeziturriaga)  
+Github: [GitHub — ItsMilkey](https://github.com/ItsMilkey)
+
+---
+
+> “Code is like humor. When you have to explain it, it’s bad.” – Cory House
