@@ -1,0 +1,163 @@
+---
+
+---
+
+<header
+    id="main-header"
+    class="fixed top-0 left-0 w-full z-50 transition-all duration-500"
+>
+    <!-- Top Bar Layout -->
+    <nav
+        id="top-nav"
+        class="max-w-[1200px] mx-auto px-6 py-4 flex justify-between items-center bg-cream/80 backdrop-blur-md md:bg-transparent md:backdrop-blur-none transition-all duration-300"
+    >
+        <a
+            href="#"
+            class="font-display font-bold text-forest text-xl uppercase tracking-widest hover:text-vibrant-orange transition-colors"
+        >
+            HG
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+            <a
+                href="#about"
+                class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
+                >ABOUT</a
+            >
+            <a
+                href="#projects"
+                class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
+                >PROJECTS</a
+            >
+            <a
+                href="#skills"
+                class="text-forest font-sans text-sm tracking-wide hover:text-vibrant-orange transition-colors"
+                >TECH STACK</a
+            >
+
+            <!-- Theme Switch Placeholder -->
+            <button
+                class="w-10 h-5 bg-forest/20 rounded-full relative cursor-not-allowed opacity-50"
+                aria-label="Toggle Theme"
+            >
+                <div
+                    class="absolute top-1 left-1 w-3 h-3 bg-forest rounded-full"
+                >
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Floating Burger Menu (Hidden initially) -->
+    <div
+        id="floating-menu-container"
+        class="fixed top-6 right-6 translate-x-[200%] transition-transform duration-500 z-50"
+    >
+        <button
+            id="menu-btn"
+            class="w-12 h-12 bg-forest text-cream rounded-full shadow-lg flex items-center justify-center hover:bg-vibrant-orange hover:text-forest transition-colors relative z-50"
+        >
+            <!-- Hamburger Icon -->
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div
+            id="dropdown-menu"
+            class="absolute top-14 right-0 w-48 bg-forest border border-cream/10 rounded-lg shadow-xl p-4 flex flex-col gap-4 opacity-0 pointer-events-none scale-95 transition-all duration-300 origin-top-right"
+        >
+            <a
+                href="#"
+                class="text-cream hover:text-vibrant-orange font-sans text-sm"
+                >Home</a
+            >
+            <a
+                href="#about"
+                class="text-cream hover:text-vibrant-orange font-sans text-sm"
+                >About</a
+            >
+            <a
+                href="#projects"
+                class="text-cream hover:text-vibrant-orange font-sans text-sm"
+                >Projects</a
+            >
+            <a
+                href="#skills"
+                class="text-cream hover:text-vibrant-orange font-sans text-sm"
+                >Tech Stack</a
+            >
+            <!-- Mobile Theme Placeholder -->
+            <div
+                class="flex items-center justify-between text-cream/50 text-xs"
+            >
+                <span>Theme</span>
+                <div class="w-8 h-4 bg-white/10 rounded-full relative"></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    const header = document.getElementById("main-header");
+    const topNav = document.getElementById("top-nav");
+    const floatingContainer = document.getElementById(
+        "floating-menu-container",
+    );
+    const menuBtn = document.getElementById("menu-btn");
+    const dropdownMenu = document.getElementById("dropdown-menu");
+
+    // Scroll Logic
+    window.addEventListener("scroll", () => {
+        if (!topNav || !floatingContainer || !dropdownMenu) return;
+
+        if (window.scrollY > 150) {
+            // Hide Top Bar
+            topNav.classList.add("-translate-y-full", "opacity-0");
+            // Show Floating Button
+            floatingContainer.classList.remove("translate-x-[200%]");
+        } else {
+            // Show Top Bar
+            topNav.classList.remove("-translate-y-full", "opacity-0");
+            // Hide Floating Button & Close Menu
+            floatingContainer.classList.add("translate-x-[200%]");
+            dropdownMenu.classList.add(
+                "opacity-0",
+                "pointer-events-none",
+                "scale-95",
+            );
+        }
+    });
+
+    // Toggle Menu
+    menuBtn?.addEventListener("click", () => {
+        if (!dropdownMenu) return;
+        dropdownMenu.classList.toggle("opacity-0");
+        dropdownMenu.classList.toggle("pointer-events-none");
+        dropdownMenu.classList.toggle("scale-95");
+    });
+
+    // Close menu when clicking links
+    dropdownMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            if (!dropdownMenu) return;
+            dropdownMenu.classList.add(
+                "opacity-0",
+                "pointer-events-none",
+                "scale-95",
+            );
+        });
+    });
+</script>

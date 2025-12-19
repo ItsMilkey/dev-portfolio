@@ -1,0 +1,28 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="mt-20 border-t border-forest/10 py-12 bg-forest text-cream">
+    <div
+        class="max-w-[1200px] mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6"
+    >
+        <p class="font-sans text-sm opacity-80">
+            &copy; {currentYear} Hans Gómez. All rights reserved.
+        </p>
+
+        <div class="flex gap-8">
+            <a
+                href="https://linkedin.com/in/hans-gomez-ityrriaga"
+                target="_blank"
+                class="hover:text-vibrant-orange transition-colors font-medium"
+                >LinkedIn</a
+            >
+            <a
+                href="https://github.com/ItsMilkey"
+                target="_blank"
+                class="hover:text-vibrant-orange transition-colors font-medium"
+                >GitHub</a
+            >
+        </div>
+    </div>
+</footer>

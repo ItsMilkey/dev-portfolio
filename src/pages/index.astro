@@ -1,16 +1,57 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ContactCard from "../components/ContactCard.astro";
+import About from "../components/About.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Hans Gómez | Portfolio">
+	<Navbar />
+	<main class="max-w-[1200px] mx-auto px-4 sm:px-6">
+		<!-- Top Section -->
+		<div class="relative min-h-[90vh] flex flex-col justify-center">
+			<Hero />
+
+			<!-- Integrated Contact Card (positioned absolutely on large screens or just flowed?) -->
+			<!-- Let's flow it nicely under hero for mobile or side by side as before, but using Grid -->
+			<div
+				class="flex justify-center md:absolute md:right-0 md:top-[50%] md:transform md:-translate-y-1/2 md:z-20 mt-10 md:mt-0"
+			>
+				<div class="scale-90 md:scale-100">
+					<ContactCard />
+				</div>
+			</div>
+
+			<!-- Scroll Indicator -->
+			<div
+				class="hidden md:flex absolute bottom-10 left-1/2 -translate-x-1/2 flex-col items-center gap-2 animate-bounce opacity-60"
+			>
+				<span class="text-xs uppercase tracking-widest text-forest"
+					>Scroll</span
+				>
+				<span class="text-2xl text-forest">↓</span>
+			</div>
+		</div>
+
+		<!-- Content Flow -->
+		<div class="flex flex-col">
+			<!-- Skills acts as a full-width divider now -->
+			<div id="skills" class="scroll-mt-24">
+				<Skills />
+			</div>
+
+			<div id="about" class="mt-20 scroll-mt-24">
+				<About />
+			</div>
+
+			<div id="projects" class="mt-20 scroll-mt-24">
+				<Projects />
+			</div>
+		</div>
+	</main>
+	<Footer />
+</Layout>
