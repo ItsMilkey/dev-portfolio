@@ -2,11 +2,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;600&family=Syne:wght@400;700;800&display=swap');
 @import "tailwindcss";
 
+/* ===== THEME SYSTEM ===== */
+:root {
+  /* Light Theme (Default) */
+  --color-bg-primary: #F5F1E3;
+  /* cream */
+  --color-bg-secondary: #2D3E2F;
+  /* forest */
+  --color-text-primary: #2D3E2F;
+  /* forest */
+  --color-text-secondary: #F5F1E3;
+  /* cream */
+  --color-accent: #FF6B35;
+  /* vibrant-orange */
+  --color-accent-alt: #FF8C69;
+  /* coral */
+  --color-hero-frame: #2D3E2F;
+  /* forest */
+  --color-hero-accent: #FFAB40;
+  /* yellowish-orange */
+  --color-hero-glow: #FFAB40;
+  /* match back accent */
+  --color-card-bg: #2D3E2F;
+  /* forest */
+  --color-card-text: #F5F1E3;
+  /* cream */
+
+  /* Opacity variants */
+  --color-text-muted: rgba(45, 62, 47, 0.7);
+  --color-border: rgba(45, 62, 47, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --color-bg-primary: #1a1a1f;
+  /* dark background */
+  --color-bg-secondary: #2a2a35;
+  /* darker background */
+  --color-text-primary: #e8e8f0;
+  /* cream text */
+  --color-text-secondary: #a0a0b0;
+  /* muted text */
+  --color-accent: #E85D2A;
+  /* vibrant-orange (same) */
+  --color-accent-alt: #9d5bd386;
+  /* purple */
+  --color-hero-frame: #3a3837;
+  /* gray becomes the frame */
+  --color-hero-accent: #3B2A3B;
+  /* purple becomes the accent back layer */
+  --color-hero-glow: #E85D2A;
+  /* orange for dark mode */
+  --color-card-bg: #25252a;
+  /* slightly different from main bg */
+  --color-card-text: #e8e8f0;
+
+  /* Opacity variants */
+  --color-text-muted: rgba(232, 232, 240, 0.7);
+  --color-border: rgba(232, 232, 240, 0.1);
+}
+
+/* Smooth theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+  transition: none !important;
+}
+
 @theme {
   --color-forest: #2D3E2F;
   --color-cream: #F5F1E3;
   --color-vibrant-orange: #F9A825;
   --color-coral: #FF7043;
+
+  /* Theme-aware variables mapped to Tailwind utilities */
+  --color-accent: var(--color-accent);
+  --color-accent-alt: var(--color-accent-alt);
+  --color-bg-primary: var(--color-bg-primary);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
 
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -121,4 +199,45 @@ body::before {
   .grid-texture {
     --grid-size: 35px;
   }
+}
+
+/* ===== THEME UTILITY CLASSES ===== */
+.bg-theme-primary {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.text-theme-primary {
+  color: var(--color-text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--color-text-muted);
+}
+
+.border-theme {
+  border-color: var(--color-border);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-accent-alt {
+  color: var(--color-accent-alt);
+}
+
+.hover-accent:hover {
+  color: var(--color-accent);
 }

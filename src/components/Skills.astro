@@ -44,11 +44,11 @@ const skillRows = [
 ---
 
 <section
-    class="py-12 bg-forest overflow-hidden relative border-t border-forest/10 w-[100vw] -ml-[calc(50vw-50%)]"
+    class="py-12 bg-theme-secondary overflow-hidden relative border-t border-theme w-[100vw] -ml-[calc(50vw-50%)]"
 >
     <div class="mb-4 text-center">
         <span
-            class="text-cream/40 px-4 py-1 border border-cream/20 rounded-full text-xs uppercase tracking-widest"
+            class="text-theme-secondary px-4 py-1 border border-theme rounded-full text-xs uppercase tracking-widest opacity-60"
             >Stack & Experience</span
         >
     </div>
@@ -58,18 +58,18 @@ const skillRows = [
         <div class="group flex overflow-hidden w-full relative">
             <!-- Mask Fade Edges -->
             <div
-                class="absolute inset-y-0 left-0 w-12 md:w-20 bg-gradient-to-r from-forest to-transparent z-10 pointer-events-none"
+                class="absolute inset-y-0 left-0 w-12 md:w-20 bg-gradient-to-r from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none"
             >
             </div>
             <div
-                class="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-forest to-transparent z-10 pointer-events-none"
+                class="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none"
             >
             </div>
 
             <div class="flex gap-3 md:gap-4 animate-scroll-right min-w-max">
                 {
                     skillRows[0].map((skill) => (
-                        <div class="px-4 py-2 md:px-8 md:py-3 bg-cream/5 border border-cream/10 rounded-lg text-cream font-display text-lg md:text-2xl uppercase whitespace-nowrap hover:bg-vibrant-orange hover:text-forest hover:border-vibrant-orange transition-colors duration-300">
+                        <div class="px-4 py-2 md:px-8 md:py-3 bg-white/5 border border-white/10 rounded-lg text-theme-secondary font-display text-lg md:text-2xl uppercase whitespace-nowrap hover:bg-accent hover:text-theme-primary hover:border-accent transition-colors duration-300">
                             {skill}
                         </div>
                     ))
@@ -80,18 +80,18 @@ const skillRows = [
         <!-- Row 2: Left Scroll -->
         <div class="group flex overflow-hidden w-full relative">
             <div
-                class="absolute inset-y-0 left-0 w-12 md:w-20 bg-gradient-to-r from-forest to-transparent z-10 pointer-events-none"
+                class="absolute inset-y-0 left-0 w-12 md:w-20 bg-gradient-to-r from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none"
             >
             </div>
             <div
-                class="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-forest to-transparent z-10 pointer-events-none"
+                class="absolute inset-y-0 right-0 w-12 md:w-20 bg-gradient-to-l from-[var(--color-bg-secondary)] to-transparent z-10 pointer-events-none"
             >
             </div>
 
             <div class="flex gap-3 md:gap-4 animate-scroll-left min-w-max">
                 {
                     skillRows[1].map((skill) => (
-                        <div class="px-4 py-2 md:px-8 md:py-3 bg-cream/5 border border-cream/10 rounded-lg text-cream font-display text-lg md:text-2xl uppercase whitespace-nowrap hover:bg-vibrant-orange hover:text-forest hover:border-vibrant-orange transition-colors duration-300">
+                        <div class="px-4 py-2 md:px-8 md:py-3 bg-white/5 border border-white/10 rounded-lg text-theme-secondary font-display text-lg md:text-2xl uppercase whitespace-nowrap hover:bg-accent hover:text-theme-primary hover:border-accent transition-colors duration-300">
                             {skill}
                         </div>
                     ))

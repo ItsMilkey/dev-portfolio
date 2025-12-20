@@ -17,32 +17,33 @@
             </div>
 
             <h1
-                class="font-display font-extrabold text-[14vw] sm:text-[12vw] md:text-[6rem] leading-[1.1] tracking-tighter uppercase relative z-10"
+                class="font-display font-extrabold text-[14vw] sm:text-[12vw] md:text-[6rem] leading-[1.1] tracking-tighter uppercase relative z-10 text-theme-primary"
                 style="text-shadow: 
-                    0 2px 4px rgba(45, 62, 47, 0.1),
-                    0 4px 8px rgba(45, 62, 47, 0.15),
-                    0 8px 16px rgba(45, 62, 47, 0.1),
-                    0 16px 32px rgba(45, 62, 47, 0.05);"
+                    0 2px 4px rgba(0, 0, 0, 0.1),
+                    0 4px 8px rgba(0, 0, 0, 0.15),
+                    0 8px 16px rgba(0, 0, 0, 0.1),
+                    0 16px 32px rgba(0, 0, 0, 0.05);"
             >
                 <!-- Both names aligned, with spacing -->
-                <span class="block text-forest">HANS</span>
-                <span class="block text-forest mt-1 md:mt-2">GÓMEZ</span>
+                <span class="block">HANS</span>
+                <span class="block mt-1 md:mt-2">GÓMEZ</span>
             </h1>
 
-            <!-- Decorative element - Orange glow -->
+            <!-- Decorative element - Theme-aware glow -->
             <div
-                class="absolute -top-10 left-0 w-32 h-32 bg-vibrant-orange rounded-full mix-blend-multiply opacity-80 blur-xl animate-float -z-10"
+                class="absolute -top-10 left-0 w-32 h-32 rounded-full mix-blend-multiply opacity-80 blur-xl animate-float -z-10"
+                style="background-color: var(--color-hero-glow);"
             >
             </div>
 
             <!-- Decorative icons and shapes (hidden on mobile) -->
             <div
-                class="hidden md:block absolute -right-8 top-0 text-coral text-3xl opacity-60 animate-pulse"
+                class="hidden md:block absolute -right-8 top-0 text-accent-alt text-3xl opacity-60 animate-pulse"
             >
                 ✦
             </div>
             <div
-                class="hidden sm:block absolute -left-6 bottom-4 text-vibrant-orange text-2xl opacity-40"
+                class="hidden sm:block absolute -left-6 bottom-4 text-accent text-2xl opacity-40"
             >
                 ●
             </div>
@@ -57,16 +58,16 @@
 
         <div class="relative inline-block mb-8">
             <h2
-                class="font-serif italic text-3xl md:text-4xl text-forest opacity-90"
+                class="font-serif italic text-3xl md:text-4xl text-theme-primary opacity-90"
             >
                 Software Developer
             </h2>
-            <!-- Yellow decorative line -->
-            <div class="w-16 h-1 bg-vibrant-orange mt-2"></div>
+            <!-- Decorative line -->
+            <div class="w-16 h-1 bg-accent mt-2"></div>
         </div>
 
         <p
-            class="font-sans text-lg md:text-xl font-medium max-w-lg text-forest/80 leading-relaxed"
+            class="font-sans text-lg md:text-xl font-medium max-w-lg text-theme-muted leading-relaxed"
         >
             Crafting efficient and scalable digital solutions with a blend of
             analytical rigor and creative engineering. I build robust backends
@@ -80,10 +81,12 @@
     >
         <!-- Main Frame -->
         <div
-            class="absolute inset-0 bg-forest rounded-sm overflow-hidden z-20 border-2 border-forest transform rotate-3 transition-transform hover:rotate-0 duration-500"
+            class="absolute inset-0 rounded-sm overflow-hidden z-20 border-2 transform rotate-3 transition-transform hover:rotate-0 duration-500"
+            style="background-color: var(--color-hero-frame); border-color: var(--color-hero-frame);"
         >
             <div
-                class="w-full h-full bg-linear-to-b from-[#3a4f3d] to-forest opacity-90"
+                class="w-full h-full opacity-90"
+                style="background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.2));"
             >
             </div>
             <!-- Placeholder suggestion for user -->
@@ -96,17 +99,18 @@
 
         <!-- Back accent -->
         <div
-            class="absolute inset-0 bg-vibrant-orange rounded-sm -rotate-3 z-10 translate-x-4 translate-y-4"
+            class="absolute inset-0 rounded-sm -rotate-3 z-10 translate-x-4 translate-y-4"
+            style="background-color: var(--color-hero-accent);"
         >
         </div>
 
         <!-- Decorative Stars -->
         <div
-            class="absolute -top-6 -left-6 text-vibrant-orange text-6xl animate-pulse z-30"
+            class="absolute -top-6 -left-6 text-accent text-6xl animate-pulse z-30"
         >
             ✦
         </div>
-        <div class="absolute -bottom-8 -right-8 text-coral text-5xl z-30">
+        <div class="absolute -bottom-8 -right-8 text-accent-alt text-5xl z-30">
             ✦
         </div>
     </div>
