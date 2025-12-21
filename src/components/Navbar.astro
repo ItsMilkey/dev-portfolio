@@ -39,12 +39,13 @@
             <!-- Theme Toggle (Functional) -->
             <button
                 onclick="toggleTheme()"
-                class="w-10 h-5 bg-forest/20 rounded-full relative cursor-pointer hover:bg-forest/30 transition-colors theme-toggle-switch"
+                class="w-10 h-5 rounded-full relative cursor-pointer hover:opacity-80 transition-all theme-toggle-switch"
                 aria-label="Toggle Theme"
+                style="background-color: var(--color-toggle-bg);"
             >
                 <div
-                    class="absolute top-0.5 left-0.5 w-4 h-4 bg-forest rounded-full transition-transform duration-300 theme-toggle-indicator"
-                    style="transform: translateX(2px);"
+                    class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full transition-transform duration-300 theme-toggle-indicator"
+                    style="transform: translateX(2px); background-color: var(--color-toggle-indicator);"
                 >
                 </div>
             </button>
@@ -79,7 +80,7 @@
         <!-- Dropdown Menu -->
         <div
             id="dropdown-menu"
-            class="absolute top-16 right-0 w-64 bg-forest border border-cream/10 rounded-xl shadow-2xl p-6 flex flex-col gap-5 opacity-0 pointer-events-none scale-95 transition-all duration-300 origin-top-right"
+            class="absolute top-16 right-0 w-64 bg-theme-secondary border border-cream/10 rounded-xl shadow-2xl p-6 flex flex-col gap-5 opacity-0 pointer-events-none scale-95 transition-all duration-300 origin-top-right"
         >
             <a
                 href="#"
@@ -108,12 +109,13 @@
                 <span>Theme</span>
                 <button
                     onclick="toggleTheme()"
-                    class="w-10 h-5 bg-white/10 rounded-full relative cursor-pointer hover:bg-white/20 transition-colors theme-toggle-switch"
+                    class="w-10 h-5 rounded-full relative cursor-pointer hover:opacity-80 transition-all theme-toggle-switch"
                     aria-label="Toggle Theme"
+                    style="background-color: var(--color-toggle-bg);"
                 >
                     <div
-                        class="absolute top-0.5 left-0.5 w-4 h-4 bg-cream rounded-full transition-transform duration-300 theme-toggle-indicator"
-                        style="transform: translateX(2px);"
+                        class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full transition-transform duration-300 theme-toggle-indicator"
+                        style="transform: translateX(2px); background-color: var(--color-accent);"
                     >
                     </div>
                 </button>
@@ -164,34 +166,95 @@
         const x = rect.left + rect.width / 2;
         const y = rect.top + rect.height / 2;
 
-        // Get the element at that position (temporarily hide the button to check what's behind)
+        // Get the element at that position
         floatingContainer.style.pointerEvents = "none";
         const elementBelow = document.elementFromPoint(x, y);
         floatingContainer.style.pointerEvents = "auto";
 
         if (!elementBelow) return;
 
-        // Get computed background color
-        const bgColor = window.getComputedStyle(elementBelow).backgroundColor;
+        // Get effective background color (traverse up if transparent)
+        const bgColor = getEffectiveBackgroundColor(elementBelow);
 
-        // Check if background is dark (forest green) or light (cream)
+        // Check if background is dark
         const isDarkBackground = isColorDark(bgColor);
 
-        // Update button styling using inline styles (more reliable than dynamic Tailwind classes)
+        // Get current theme state
+        const currentTheme =
+            document.documentElement.getAttribute("data-theme") || "light";
+
+        // Define contrast colors relative to the theme
+        // Dark Theme: Primary BG is Dark (#1a1a1f), Text is Light (#e8e8f0)
+        // Light Theme: Primary BG is Light (#F5F1E3), Text is Dark (#2D3E2F)
+
+        // If we are over a DARK background, we need a LIGHT button.
+        // If we are over a LIGHT background, we need a DARK button.
+
+        let btnBg, btnText;
+
         if (isDarkBackground) {
-            // Dark background (forest) -> Light button (cream)
-            menuBtn.style.backgroundColor = "#F5F1E3"; // cream
-            menuBtn.style.color = "#2D3E2F"; // forest
+            // Need LIGHT button
+            // In Dark Theme, TextPrimary is Light. In Light Theme, BgPrimary is Light.
+            if (currentTheme === "dark") {
+                // Use Theme Light Text Color (Grayish White)
+                btnBg = "#e8e8f0";
+                btnText = "#1a1a1f";
+            } else {
+                // Use Theme Background Color (Cream)
+                btnBg = "#F5F1E3";
+                btnText = "#2D3E2F";
+            }
         } else {
-            // Light background (cream) -> Dark button (forest)
-            menuBtn.style.backgroundColor = "#2D3E2F"; // forest
-            menuBtn.style.color = "#F5F1E3"; // cream
+            // Need DARK button
+            // In Dark Theme, BgPrimary is Dark. In Light Theme, TextPrimary is Dark.
+            if (currentTheme === "dark") {
+                // Use Theme Background Color (Dark Gray)
+                btnBg = "#1a1a1f";
+                btnText = "#e8e8f0";
+            } else {
+                // Use Theme Text Color (Forest)
+                btnBg = "#2D3E2F";
+                btnText = "#F5F1E3";
+            }
         }
+
+        menuBtn.style.backgroundColor = btnBg;
+        menuBtn.style.color = btnText;
+    }
+
+    // Helper to get effective background color by traversing up
+    function getEffectiveBackgroundColor(element: Element | null): string {
+        if (!element) return "rgba(0, 0, 0, 0)";
+
+        const style = window.getComputedStyle(element);
+        const bgColor = style.backgroundColor;
+
+        // Check if color is transparent or not set
+        if (
+            !bgColor ||
+            bgColor === "transparent" ||
+            bgColor === "rgba(0, 0, 0, 0)"
+        ) {
+            // If we reached the body/html and it's still transparent, return the theme background
+            if (element.tagName === "BODY" || element.tagName === "HTML") {
+                // Fallback to checking the calculated theme background
+                return getComputedStyle(document.body).backgroundColor;
+            }
+            // Traverse up
+            if (element.parentElement) {
+                return getEffectiveBackgroundColor(element.parentElement);
+            }
+        }
+
+        return bgColor;
     }
 
     // Helper function to determine if a color is dark
     function isColorDark(color: string): boolean {
-        // Parse RGB values from the color string
+        // Handle transparent or empty
+        if (!color || color === "transparent" || color === "rgba(0, 0, 0, 0)")
+            return false;
+
         const rgb = color.match(/\d+/g);
         if (!rgb || rgb.length < 3) return false;
 
@@ -205,6 +268,16 @@
         // Consider dark if luminance is less than 0.5
         return luminance < 0.5;
     }
+
+    // Listen for theme changes to update button color immediately
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === "data-theme") {
+                updateFloatingMenuColor();
+            }
+        });
+    });
+    observer.observe(document.documentElement, { attributes: true });
 
     // Toggle Menu
     menuBtn?.addEventListener("click", () => {

@@ -27,6 +27,12 @@
   /* forest */
   --color-card-text: #F5F1E3;
   /* cream */
+  /* cream */
+  --color-toggle-indicator: #2D3E2F;
+  /* forest */
+  --color-toggle-bg: rgba(0, 0, 0, 0.1);
+  /* light gray for light mode */
+  /* forest */
 
   /* Opacity variants */
   --color-text-muted: rgba(45, 62, 47, 0.7);
@@ -56,6 +62,12 @@
   --color-card-bg: #25252a;
   /* slightly different from main bg */
   --color-card-text: #e8e8f0;
+  --color-card-text: #e8e8f0;
+  --color-toggle-indicator: #FFFFFF;
+  /* white */
+  --color-toggle-bg: rgba(255, 255, 255, 0.2);
+  /* brighter white for dark mode */
+  /* white */
 
   /* Opacity variants */
   --color-text-muted: rgba(232, 232, 240, 0.7);
